@@ -41,6 +41,7 @@ def get_authz_token(token):
 def create_experiment(airavataClient, authzToken, Experiment):
     gateway="default"
     experimentId = airavataClient.createExperiment(authzToken,gateway,Experiment)
+    return experimentId
  
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -76,17 +77,16 @@ if __name__ == '__main__':
 
     #create experiment object
     Experiment = ExperimentModel()
-    #Experiment.projectID
+    #Experiment.projectID =
+    Experiment.experimentName = args.expname
+    Experiment.userName = args.username
+    Experiment.experimentType = ExperimentType.SINGLE_APPLICATION
+    Experiment.gatewayId = "default"
 
-    #creating project object
-    Proj = Project()
-    Proj.gatewayId = "default"
-    Proj.name = args.projname
-    Proj.owner= "shubhamkr1"
+    expId = create_experiment(airvataClient, authz_token, Experiment)
 
-    projectId = airavataClient.createProject(authz_token,"default",Proj)
-    print("Newly created projectID: "+projectId)
-    projects = get_all_projects(airavataClient, authz_token, username)
+    print("Newly created experimentID:"+ expId)
+    #projects = get_all_projects(airavataClient, authz_token, username)
     transport.close()
     print(projects)
 

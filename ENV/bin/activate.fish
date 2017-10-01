@@ -32,7 +32,7 @@ end
 # unset irrelavent variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/ubuntu/SGA_Assignemnt3/myCLI/ENV"
+set -gx VIRTUAL_ENV "/home/ubuntu/SGA_Assignemnt3/airavata-CLI/ENV"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
