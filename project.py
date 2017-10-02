@@ -32,8 +32,8 @@ def get_airavata_client(transport):
     return airavataClient
 
 
-def get_authz_token(token):
-    return AuthzToken(accessToken=token, claimsMap={'gatewayID': "default", 'userName': "shubhamkr1"})
+def get_authz_token(token,username):
+    return AuthzToken(accessToken=token, claimsMap={'gatewayID': "default", 'userName': username})
 
 def get_all_projects(airavataClient, authzToken, username):
 
@@ -62,9 +62,11 @@ if __name__ == '__main__':
     config.read('airavata-client.ini')
     token = config['credentials']['AccessToken']
 
-    authz_token = get_authz_token(token)
-    #print(authz_token)
+
     username = args.owner
+    authz_token = get_authz_token(token,username)
+    #print(authz_token)
+
     hostname = "apidev.scigap.org"
     port = "9930"
     transport = get_transport(hostname, port)
