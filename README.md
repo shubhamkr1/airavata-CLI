@@ -3,8 +3,12 @@
 I have used argparse library to parse arguments given by user. This tool used Thrift to communicate with Airavata API.
 
 # Running
-
-* copy airavata-client.ini.template to airavata-client.ini and change properties
+* clone repo in your local directory
+* create acesstoken using command
+```
+curl --data "username=myusername&password=mypassword" https://dev.testdrive.airavata.org/api-login
+```
+  and paste access token string in airavata-client.ini file
 * install Python 3
 * create a virtual environment and activate it
 ```
@@ -13,7 +17,7 @@ python3 -m venv ENV
 ```
 * install dependencies
 ```
-pip install -r requirements.txt
+pip install -r requirement.txt
 ```
 * run the script 
 ```
