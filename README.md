@@ -1,5 +1,7 @@
 # airavata-CLI
 
+I have used argparse library to parse arguments given by user. This tool used Thrift to communicate with Airavata API.
+
 # Running
 
 * copy airavata-client.ini.template to airavata-client.ini and change properties
@@ -13,6 +15,16 @@ python3 -m venv ENV
 ```
 pip install -r requirements.txt
 ```
-* run the test script: `python test.py`
+* run the script 
+ client-code.py = To create new project
+ experiment.py = To create new experiment
+ 
+ To get the help page listing all the options, run
+ python3 client-doc.py --help
+ python3 experiment.py --help
+ 
+ Run the code -
+ python3 client-code.py createproj name [arguments] [options] 
+ python3 experiment.py createexp name [arguments] [options] 
 
 Source : https://github.com/machristie/airavata-python3-client/blob/master/README.md
