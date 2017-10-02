@@ -4,6 +4,7 @@ from apache.airavata.api.ttypes import *
 
 from apache.airavata.model.workspace.ttypes import *
 from apache.airavata.model.security.ttypes import AuthzToken
+from apache.airavata.model.experiment.ttypes import *
 
 import argparse
 import configparser
@@ -36,7 +37,10 @@ def get_airavata_client(transport):
 def get_authz_token(token):
     return AuthzToken(accessToken=token, claimsMap={'gatewayID': "default", 'userName': "shubhamkr1"})
 
-
+def get_all_projects(airavataClient, authzToken, gatewayId, username):
+    #Get all projects of given user
+    projectLists = airavataClient.getUserProjects(authzToken, gatewayId, username, -1, 0)
+    return projectLists
 
 def create_experiment(airavataClient, authzToken, Experiment):
     gateway="default"
@@ -67,7 +71,7 @@ if __name__ == '__main__':
 
     authz_token = get_authz_token(token)
     #print(authz_token)
-    username="shubhamkr1"
+    username=args.username
     hostname = "apidev.scigap.org"
     port = "9930"
     transport = get_transport(hostname, port)
@@ -83,7 +87,7 @@ if __name__ == '__main__':
     Experiment.experimentType = ExperimentType.SINGLE_APPLICATION
     Experiment.gatewayId = "default"
 
-    expId = create_experiment(airvataClient, authz_token, Experiment)
+    expId = create_experiment(airavataClient, authz_token, Experiment)
 
     print("Newly created experimentID:"+ expId)
     #projects = get_all_projects(airavataClient, authz_token, username)
