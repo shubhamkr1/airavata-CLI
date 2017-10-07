@@ -80,9 +80,13 @@ if __name__ == '__main__':
     Proj.name = args.projname
     Proj.owner= args.owner
 
-    projectId = airavataClient.createProject(authz_token,"default",Proj)
-    print("Newly created projectID: "+projectId)
+    #projectId = airavataClient.createProject(authz_token,"default",Proj)
+    #print("Newly created projectID: "+projectId)
 
     projects = get_all_projects(airavataClient, authz_token, username)
     transport.close()
     print(projects)
+
+    for proj in projects:
+        if proj.name == "abcd":
+            print(proj.name)
