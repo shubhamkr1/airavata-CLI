@@ -3,6 +3,7 @@
 I have used argparse library to parse arguments given by user. This tool used Thrift to communicate with Airavata API.
 
 # Running
+* create an account at https://dev.testdrive.airavata.org/ .The request will be approved by admin.
 * clone repo in your local directory
 * create acesstoken using command
 ```
